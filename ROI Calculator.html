@@ -1,0 +1,149 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="edit-Type" edit="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DHI energy and carbon savings calculator</title>
+	  <style>
+	  
+		  body {font-family: /* @font-family */ "Segoe UI"; font-size: 14px;}
+		  .roiAnalizerMainContainer {border: 1px solid #eee; padding: 0 20px 30px 20px; width: 350px; background-color: #fafafa;}
+		  .roiResultsContainer {background-color: #fff; padding: 0 10px 10px 10px; }
+	  </style>
+  </head>
+
+<script src="ROICalculator.js"></script>
+
+<body onload="calculateROI()"">
+
+<section class="introTxtMainContainer">
+    <div class="introTxtContainer">
+        <h3 class="introTitle">Estimate your energy and carbon savings</h3>
+        <p class="introSubtitle">Find out what is the potential savings in energy cost and carbon emissions when you adopt an aeration control optimisation study and implement by DHI and SENTRY.</p>
+    </div>
+</section>
+
+<section class="roiAnalizerMainContainer">
+    <div class="roiAnalizerContainer">
+        <form id="roiForm" class="roiForm"  action="">
+            <div class="rowContainer">
+                <div class="firstColumnOfRowContainer">
+                    <p class="roiFormTitle"><strong>Plant capacity in million gallons per day:</strong></p>
+                </div>
+                <div class="secondColumnOfRowContainer" style="padding: 20px 0;">
+                    <input type="range" min="1" style="min-width: 260px;" max="2000" value="10" class="myslider" id="sliderRange" oninput="showValue1(this.value)">
+                    <label for="plantSize"><span id="plantSize">10</span></label><label> (mgd)</label>
+                </div>
+            </div>
+
+            <div class="rowContainer">
+                <div class="firstColumnOfRowContainer"><span class="roiFormTitle"><strong>Plant location in the U.S:</strong></span></div>
+                <div class="secondColumnOfRowContainer" style="padding: 20px 0;">
+                    <select id="plantLocation" onChange="calculateROI()" style"="padding: 6px; margin-left: 0px; max-width: 100%; border-radius: 4px; text-decoration: none; line-height: 30px; min-width: 167px; border: solid black 1px;">
+                        <option value=0.0859>Alabama</option>
+                        <option value=0.1974>Alaska</option>
+                        <option value=0.0791>Arizona</option>
+                        <option value=0.0798>Arkansas</option>
+                        <option value=0.1782>California</option>
+                        <option value=0.0879>Colorado</option>
+                        <option value=0.15>Connecticut</option>
+                        <option value=0.0877>Delaware</option>
+                        <option value=0.0708>District of Columbia</option>
+                        <option value=0.0936>Florida</option>
+                        <option value=0.1297>Georgia</option>
+                        <option value=0.3709>Hawaii</option>
+                        <option value=0.0797>Idaho</option>
+                        <option value=0.0932>Illinois</option>
+                        <option value=0.0937>Indiana</option>
+                        <option value=0.0897>Iowa</option>
+                        <option value=0.0864>Kansas</option>
+                        <option value=0.0864>Kentucky</option>
+                        <option value=0.0753>Louisiana</option>
+                        <option value=0.1239>Maine</option>
+                        <option value=0.105>Maryland</option>
+                        <option value=0.18>Massachusetts</option>
+                        <option value=0.0878>Michigan</option>
+                        <option value=0.1017>Minnesota</option>
+                        <option value=0.0704>Mississippi</option>
+                        <option value=0.0929>Missouri</option>
+                        <option value=0.0543>Montana</option>
+                        <option value=0.0777>Nebraska</option>
+                        <option value=0.0902>Nevada</option>
+                        <option value=0.145>New Hampshire</option>
+                        <option value=0.1299>New Jersey</option>
+                        <option value=0.0648>New Mexico</option>
+                        <option value=0.0765>New York</option>
+                        <option value=0.0692>North Carolina</option>
+                        <option value=0.0689>North Dakota</option>
+                        <option value=0.0815>Ohio</option>
+                        <option value=0.0761>Oklahoma</option>
+                        <option value=0.0611>Oregon</option>
+                        <option value=0.0853>Pennsylvania</option>
+                        <option value=0.1741>Rhode Island</option>
+                        <option value=0.0768>South Carolina</option>
+                        <option value=0.0838>South Dakota</option>
+                        <option value=0.071>Tennessee</option>
+                        <option value=0.0752>Texas</option>
+                        <option value=0.0672>Utah</option>
+                        <option value=0.1229>Vermont</option>
+                        <option value=0.0796>Virginia</option>
+                        <option value=0.0559>Washington</option>
+                        <option value=0.0718>West Virginia</option>
+                        <option value=0.093>Wisconsin</option>
+                        <option value=0.0675>Wyoming</option>
+
+                      </select>
+                </div>
+            </div>
+        </form>
+        <!--<button id="ctaCalculate" class="roibutton" style="margin-right: auto; margin-left: 0px; max-width: 100%; color: rgb(255, 255, 255); border-radius: 4px; text-decoration: none; line-height: 30px; background-color: rgb(39, 113, 194); width: 167px; border: 0;" onclick = "calculateROI()">Estimate savings</button>!-->
+    </div>
+</section>
+
+<section class="roiResultsMainContainer" id="roiResultsMainContainer">
+    <div class="roiResultsContainer">
+        <h3 class="roiResultsTitle" id="roiResultsTitle"></h3>
+            <div class="roiResultsAnalyticContainer">
+                <div class="analyticRowContainer">
+                    <p class="roiAnalyticValue" id="energyCost"></p>
+                </div>
+                <div class="analyticRowContainer">
+                    <p class="roiAnalyticValue" id="totalEnergyConsumption"></p>
+                </div>
+                <div class="analyticRowContainer">
+                    <p class="roiAnalyticValue" id="aerationEnergyConsumption"></p>
+                </div>
+                <div class="analyticRowContainer">
+                    <p class="roiAnalyticValue" id="potentialAerationEnergyReduction"></p>
+                </div>
+                <div class="analyticRowContainer">
+                    <p class="roiAnalyticValue" id="potentialEnergySavings"></p>
+                </div>
+                <div class="analyticRowContainer">
+                    <p class="roiAnalyticValue" id="potentialCO2EmissionSavings"></p>
+                </div>
+                <div class="analyticRowContainer">
+                    <p class="roiAnalyticValue" id="feasibilityStudyInvestment"></p>
+                </div>
+                <div class="analyticRowContainer">
+                    <p class="roiAnalyticValue" id="implementationInvestment"></p>
+                </div>
+                <div class="analyticRowContainer">
+                    <p class="roiAnalyticValue" id="breakevenTime"></p>
+                </div>
+                <div class="analyticRowContainer">
+                    <p class="roiAnalyticValue" id="3YearROI"></p>
+                </div>
+                <div class="analyticRowContainer">
+                    <p class="roiAnalyticValue" id="disclaimer"></p>
+                </div>				
+            </div>
+    </div>
+	
+</section>
+
+	
+	
+</body>
+</html>
