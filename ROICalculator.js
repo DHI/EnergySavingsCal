@@ -43,6 +43,6 @@ function calculateROI() {
     //document.getElementById("implementationInvestment").innerHTML="<ul><li>A further implementation project investment of <strong>" + implementationProject.toLocaleString() + "* USD</strong> is needed after we concluded potential savings are feasible.</li></ul>";
     document.getElementById("breakevenTime").innerHTML="<ul><li>The breakeven time for the total investment is between <strong>" + breakeven1 + "</strong> and <strong>" + breakeven2 + "</strong> years.</li></ul>";
     document.getElementById("3YearROI").innerHTML="<ul><li>The 3-year return of investment (ROI) is between <strong>" + roi1 + " %</strong> and <strong>" + roi2 + " %</strong>.</li></ul>";
-    document.getElementById("disclaimer").innerHTML="<br><hr style='height: 1px; text-align: center;'><i style='font-size: 75%;'>Disclaimer: Lorem ipsum</i>.";
+    //document.getElementById("disclaimer").innerHTML="<br><hr style='height: 1px; text-align: center;'><i style='font-size: 75%;'>Disclaimer: Lorem ipsum</i>.";
 	
 }
