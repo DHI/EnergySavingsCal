@@ -26,14 +26,19 @@ function calculateROI() {
     var breakeven2 = ((feasibilityStudyPrice+implementationProject)/energyCostSavings1).toFixed(1);
     var roi1 = (energyCostSavings1*3/(feasibilityStudyPrice+implementationProject)*100).toFixed(0);
     var roi2 = (energyCostSavings2*3/(feasibilityStudyPrice+implementationProject)*100).toFixed(0);
+	
+	const format0 = (num, decimals) => num.toLocaleString('en-US', {
+	minimumFractionDigits: 0,
+	maximumFractionDigits: 0,
+	});
 
     document.getElementById("roiResultsTitle").innerHTML = "Results";
     document.getElementById("energyCost").innerHTML="<ul><li>The plant capacity is <strong>" + plantSize.toLocaleString() + " million gallons per day (mgd)</strong> and is located at <strong>" + plantLocation + "</strong>, where the average energy cost for industries is <strong>" + energyCost + " USD per kWh</strong>.</li></ul>";
     document.getElementById("totalEnergyConsumption").innerHTML="<ul><li>The estimated total energy consumption for the plant is <strong>" + totalEnergyConsumption.toLocaleString() + " kWh per day</strong>.</li></ul>";
     document.getElementById("aerationEnergyConsumption").innerHTML="<ul><li>The estimated energy consumption for aeration control is between <strong>" + (totalEnergyConsumption*aerationConsumption1).toLocaleString() + " kWh per day</strong> (40%) to <strong>" + (totalEnergyConsumption*aerationConsumption2).toLocaleString() + " kWh per day</strong> (70%).</li></ul>";
     document.getElementById("potentialAerationEnergyReduction").innerHTML="<ul><li>When aeration control is optimised with DHI's approach, the potential energy savings are between  <strong>" + energySavings1.toLocaleString() + " kWh per day</strong> (20%) to <strong>" + energySavings2.toLocaleString() + " kWh per day</strong> (40%).</li></ul>" ;
-    document.getElementById("potentialEnergySavings").innerHTML="<ul><li>This amounts to potential energy cost savings between <strong>" + energyCostSavings1.toLocaleString() + " USD per year</strong> and <strong>" + energyCostSavings2.toLocaleString() + " USD per year</strong>.</li></ul>";
-    document.getElementById("potentialCO2EmissionSavings").innerHTML="<ul><li>This also amounts to carbon emission savings between <strong>" + co2Savings1.toLocaleString() + " metric tons of CO2 per year </strong> and <strong>" + co2Savings2.toLocaleString() + " metric tons of CO2 per year</strong>.</li></ul>";
+    document.getElementById("potentialEnergySavings").innerHTML="<ul><li>This amounts to potential energy cost savings between <strong>" + format0(energyCostSavings1) + " USD per year</strong> and <strong>" + format0(energyCostSavings2) + " USD per year</strong>.</li></ul>";
+    document.getElementById("potentialCO2EmissionSavings").innerHTML="<ul><li>This also amounts to carbon emission savings between <strong>" + format0(co2Savings1) + " metric tons of CO2 per year </strong> and <strong>" + format0(co2Savings2) + " metric tons of CO2 per year</strong>.</li></ul>";
     //document.getElementById("feasibilityStudyInvestment").innerHTML="<ul><li>We can conduct a feasibility study to analyze and evaluate the potential savings at  <strong>" + feasibilityStudyPrice.toLocaleString() + " USD</strong>.</li></ul>";
     //document.getElementById("implementationInvestment").innerHTML="<ul><li>A further implementation project investment of <strong>" + implementationProject.toLocaleString() + "* USD</strong> is needed after we concluded potential savings are feasible.</li></ul>";
     document.getElementById("breakevenTime").innerHTML="<ul><li>The breakeven time for the total investment is between <strong>" + breakeven1 + "</strong> and <strong>" + breakeven2 + "</strong> years.</li></ul>";
