@@ -24,8 +24,8 @@ function calculateROI() {
     var co2Savings2 = (energySavings2*CO2emission*365/1000);
     var breakeven1 = ((feasibilityStudyPrice+implementationProject)/energyCostSavings2).toFixed(1);
     var breakeven2 = ((feasibilityStudyPrice+implementationProject)/energyCostSavings1).toFixed(1);
-    var roi1 = (energyCostSavings1*3/(feasibilityStudyPrice+implementationProject)*100).toFixed(0);
-    var roi2 = (energyCostSavings2*3/(feasibilityStudyPrice+implementationProject)*100).toFixed(0);
+    var roi1 = (energyCostSavings1*3/(feasibilityStudyPrice+implementationProject)*100);
+    var roi2 = (energyCostSavings2*3/(feasibilityStudyPrice+implementationProject)*100);
 	
 	const format0 = (num, decimals) => num.toLocaleString('en-US', {
 	minimumFractionDigits: 0,
