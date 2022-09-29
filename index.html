@@ -1,46 +1,61 @@
-<html>
-  <head>
+<!doctype html>
+<html lang="en">
+
+<head>
     <meta charset="utf-8">
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta http-equiv="edit-Type" edit="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        body {
+            font-family:
+                /* @font-family */
+                "Segoe UI";
+            font-size: 14px;
+        }
+    </style>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
     <title>DHI energy and carbon savings calculator</title>
-	  <style>
-	  
-		  body {font-family: /* @font-family */ "Segoe UI"; font-size: 14px;}
-		  .roiAnalizerMainContainer {border: 1px solid #eee; padding: 0 20px 30px 20px; width: 350px; background-color: #fafafa;}
-		  .roiResultsContainer {background-color: #fff; padding: 0 10px 10px 10px; }
-	  </style>
-  </head>
+
+</head>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+    crossorigin="anonymous"></script>
 
 <script src="ROICalculator.js"></script>
 
 <body onload="calculateROI()"">
+    
+    <div class="container" align="center" 
+        style="background-image: url('images/calc-background.png'); background-size: cover;">
 
-<section class="introTxtMainContainer">
-    <div class="introTxtContainer">
-        <h3 class="introTitle">Estimate your energy and carbon savings</h3>
-        <p class="introSubtitle">Find out what is the potential savings in energy cost and carbon emissions when you adopt an aeration control optimisation study and implement by DHI and SENTRY.</p>
-    </div>
-</section>
-
-<section class="roiAnalizerMainContainer">
-    <div class="roiAnalizerContainer">
-        <form id="roiForm" class="roiForm"  action="">
-            <div class="rowContainer">
-                <div class="firstColumnOfRowContainer">
-                    <p class="roiFormTitle"><strong>Plant capacity in million gallons per day:</strong></p>
-                </div>
-                <div class="secondColumnOfRowContainer" style="padding: 20px 0;">
-                    <input type="range" min="2" style="min-width: 260px;" max="500" value="10" class="myslider" id="sliderRange" oninput="showValue1(this.value)">
-                    <label for="plantSize"><span id="plantSize">10</span></label><label> (mgd)</label>
-                </div>
+        <div class="container" style="max-width: 720px;">
+            
+            <div class="row" align="center" style="padding-top: 20px; padding-bottom: 20px;">
+                <img class="rounded" src="images/dhi-logo.png" alt="">
             </div>
 
-            <div class="rowContainer">
-                <div class="firstColumnOfRowContainer"><span class="roiFormTitle"><strong>Plant location in the U.S:</strong></span></div>
-                <div class="secondColumnOfRowContainer" style="padding: 20px 0;">
-                    <select id="plantLocation" onChange="calculateROI()" style"="padding: 6px; margin-left: 0px; max-width: 100%; border-radius: 4px; text-decoration: none; line-height: 30px; min-width: 167px; border: solid black 1px;">
+            <div class="row" align="center" style="color: white; padding-bottom: 20px;">Estimate your energy and carbon savings</div>
+            
+            <div class="row" align="center" style="color: white; padding-bottom: 20px;">
+                Find out what is the potential savings in energy
+                    cost and carbon emissions when you adopt an aeration control optimisation study and implementation by DHI and SENTRY.
+            </div>
+
+            <!-- Calculator controls -->
+            <div class="row" align="center" style="background-color: #003e88; color:#50a0ff; padding-top: 20px; padding-bottom: 20px;"><strong>Water & Resource Recovery Facility</strong>
+                <div class="col" style="padding-top: 10px; color: white;" >Capacity: 
+                    <input type="range" min="2" max="500" value="10" class="myslider" id="sliderRange"
+                        oninput="showValue1(this.value)">
+                    <label for="plantSize"><span id="plantSize">10</span></label><label> (mgd)</label>
+                </div>
+                <div class="col" style="padding-top: 10px; color: white;" >Location: 
+                    <select id="plantLocation" onChange="calculateROI()"
+                        style"="padding: 6px; margin-left: 0px; border-radius: 4px; text-decoration: none; line-height: 30px; min-width: 167px; border: solid black 1px;">
                         <option value=0.0859>Alabama</option>
                         <option value=0.1974>Alaska</option>
                         <option value=0.0791>Arizona</option>
@@ -92,61 +107,69 @@
                         <option value=0.0718>West Virginia</option>
                         <option value=0.093>Wisconsin</option>
                         <option value=0.0675>Wyoming</option>
-
-                      </select>
+                    </select>
                 </div>
             </div>
-        </form>
-        <!--<button id="ctaCalculate" class="roibutton" style="margin-right: auto; margin-left: 0px; max-width: 100%; color: rgb(255, 255, 255); border-radius: 4px; text-decoration: none; line-height: 30px; background-color: rgb(39, 113, 194); width: 167px; border: 0;" onclick = "calculateROI()">Estimate savings</button>!-->
-    </div>
-</section>
 
-<section class="roiResultsMainContainer" id="roiResultsMainContainer">
-    <div class="roiResultsContainer">
-        <h3 class="roiResultsTitle" id="roiResultsTitle"></h3>
-            <div class="roiResultsAnalyticContainer">
-                <div class="analyticRowContainer">
+            <!-- Results -->
+            <div class="row" style="background-color: white; padding-left: 20px; padding-right: 20px; padding-bottom: 20px;" align="center">
+                <img src="images/calc-table-blue-arrow.svg"  alt="" width="10%">
+                
+                <h3 class="roiResultsTitle" id="roiResultsTitle"" style="color: #0075ff;"></h3>
+                <div class="row" align="left">
                     <p class="roiAnalyticValue" id="energyCost"></p>
                 </div>
-                <div class="analyticRowContainer">
+                <div class="row" align="left">
                     <p class="roiAnalyticValue" id="totalEnergyConsumption"></p>
                 </div>
-                <div class="analyticRowContainer">
+                <div class="row" align="left">
                     <p class="roiAnalyticValue" id="aerationEnergyConsumption"></p>
                 </div>
-                <div class="analyticRowContainer">
+                <div class="row" align="left">
                     <p class="roiAnalyticValue" id="potentialAerationEnergyReduction"></p>
                 </div>
-                <div class="analyticRowContainer">
+                <div class="row" align="left">
                     <p class="roiAnalyticValue" id="potentialEnergySavings"></p>
                 </div>
-                <div class="analyticRowContainer">
+                <div class="row" align="left">
                     <p class="roiAnalyticValue" id="potentialCO2EmissionSavings"></p>
                 </div>
-                <!--<div class="analyticRowContainer">
+                <div class="row" align="left">
                     <p class="roiAnalyticValue" id="feasibilityStudyInvestment"></p>
                 </div>
-                <div class="analyticRowContainer">
+                <div class="row" align="left">
                     <p class="roiAnalyticValue" id="implementationInvestment"></p>
-                </div>-->
-                <div class="analyticRowContainer">
+                </div>
+                <div class="row" align="left">
                     <p class="roiAnalyticValue" id="breakevenTime"></p>
                 </div>
-                <div class="analyticRowContainer">
+                <div class="row" align="left">
                     <p class="roiAnalyticValue" id="3YearROI"></p>
                 </div>
-                <div class="analyticRowContainer">
-                    <p class="roiAnalyticValue" id="disclaimer"><sub>Disclaimer: We provide this website as a service and for informational purposes only.
-The transmission of this information does not create any form of relationship with us. You should not act upon information provided on this site without seeking our personal assistance. While we have attempted to maintain the information, the software and any other services on this site as accurately as possible, the site may contain errors or omissions for which we disclaim any and all liability. The material and contents posted on this site is provided without warranty of any kind.
-
-We are not responsible for any loss of hardware, software or files, caused by the use of the web site or elements downloaded or used from/on the web site. Hence we make no warranty, that the web site or product or services provided on the web site, either by us or on our behalf (including free software downloads) will meet your requirements or will be uninterrupted, timely, secure or without errors, or that the website or the servers we use are free of viruses or bugs or are fully functional or accurate.</sub></p>
-                </div>				
+                <div class="row">
+                    <button type="button" class="btn btn-primary" onclick="window.location.href='https://ocean.dhigroup.com/WEFTEC-2022/';">Learn more</button>
+                </div>
             </div>
-    </div>
-	
-</section>
+            
+            <!-- Disclaimer -->
+            <div class="row" align="left" style="font-size: 8px; color: white; padding-top: 20px; padding-bottom: 20px" id="disclaimer">Disclaimer: We provide this website as a service
+                    and for informational purposes only.
+                    The transmission of this information does not create any form of relationship with us. You
+                    should not act upon information provided on this site without seeking our personal
+                    assistance. While we have attempted to maintain the information, the software and any other
+                    services on this site as accurately as possible, the site may contain errors or omissions
+                    for which we disclaim any and all liability. The material and contents posted on this site
+                    is provided without warranty of any kind.
 
-	
-	
+                    We are not responsible for any loss of hardware, software or files, caused by the use of the
+                    web site or elements downloaded or used from/on the web site. Hence we make no warranty,
+                    that the web site or product or services provided on the web site, either by us or on our
+                    behalf (including free software downloads) will meet your requirements or will be
+                    uninterrupted, timely, secure or without errors, or that the website or the servers we use
+                    are free of viruses or bugs or are fully functional or accurate.
+            </div>
+            
+        </div>
+    </div>
 </body>
 </html>
