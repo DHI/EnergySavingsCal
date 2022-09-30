@@ -11,6 +11,8 @@
                 /* @font-family */
                 "Segoe UI";
             font-size: 14px;
+	 margin: 0;
+	padding: 0;
         }
     </style>
 
@@ -28,32 +30,28 @@
 
 <script src="ROICalculator.js"></script>
 
-<body onload="calculateROI()"">
+<body onload="calculateROI()">
     
-    <div class="container" align="center" 
-        style="background-image: url('calc-background.png'); background-size: cover;">
+    <div class="container" align="center" style="background-image: url('images/calc-background.jpg'); background-size: cover; padding-top:50px;">
 
-        <div class="container" style="max-width: 720px;">
+        <div class="container" style="max-width: 720px; padding: 20px;">
             
             <div class="row" align="center" style="padding-top: 20px; padding-bottom: 20px;">
-                <img class="rounded" src="dhi-logo.png" alt="">
+                <img width="100" height="59" src="images/DHI_Logo_White.svg">
             </div>
 
-            <div class="row" align="center" style="color: white; padding-bottom: 20px;">Estimate your energy and carbon savings</div>
+            <div class="row" align="center" style="color: white; padding-bottom: 20px;"><h1 style="font-weight: 200; font-size:38px; padding:0; margin:0;">Estimate your energy and carbon savings</h1></div>
             
-            <div class="row" align="center" style="color: white; padding-bottom: 20px;">
-                Find out what is the potential savings in energy
-                    cost and carbon emissions when you adopt an aeration control optimisation study and implementation by DHI and SENTRY.
-            </div>
+            <div class="row" align="center" style="color: white; padding-bottom: 20px;"><h3>Find out what is the potential savings in energy cost and carbon emissions when you adopt an aeration control optimisation study and implementation by DHI and SENTRY.</h3></div>
 
             <!-- Calculator controls -->
-            <div class="row" align="center" style="background-color: #003e88; color:#50a0ff; padding-top: 20px; padding-bottom: 20px;"><strong>Water & Resource Recovery Facility</strong>
-                <div class="col" style="padding-top: 10px; color: white;" >Capacity: 
+            <div class="row" align="center" style="background-color: #003e88; color:#50a0ff; padding: 20px;"><strong style="display: block"><h2>Water & Resource Recovery Facility</h2></strong>
+                <div class="col" style="padding-top: 10px; color: white; display: inline-block;" >Capacity: 
                     <input type="range" min="2" max="500" value="10" class="myslider" id="sliderRange"
                         oninput="showValue1(this.value)">
                     <label for="plantSize"><span id="plantSize">10</span></label><label> (mgd)</label>
                 </div>
-                <div class="col" style="padding-top: 10px; color: white;" >Location: 
+                <div class="col" style="padding-top: 10px; color: white; padding-left: 20px; display: inline;" >Location: 
                     <select id="plantLocation" onChange="calculateROI()"
                         style"="padding: 6px; margin-left: 0px; border-radius: 4px; text-decoration: none; line-height: 30px; min-width: 167px; border: solid black 1px;">
                         <option value=0.0859>Alabama</option>
@@ -107,15 +105,15 @@
                         <option value=0.0718>West Virginia</option>
                         <option value=0.093>Wisconsin</option>
                         <option value=0.0675>Wyoming</option>
-                    </select>
+                    </select><br><br>
                 </div>
             </div>
 
             <!-- Results -->
             <div class="row" style="background-color: white; padding-left: 20px; padding-right: 20px; padding-bottom: 20px;" align="center">
-                <img src="calc-table-blue-arrow.svg"  alt="" width="10%">
+                <img src="images/calc-table-blue-arrow.svg"  alt="" width="10%">
                 
-                <h3 class="roiResultsTitle" id="roiResultsTitle"" style="color: #0075ff;"></h3>
+                <h2 class="roiResultsTitle" id="roiResultsTitle"" style="color: #0075FF;"></h2>
                 <div class="row" align="left">
                     <p class="roiAnalyticValue" id="energyCost"></p>
                 </div>
@@ -147,12 +145,12 @@
                     <p class="roiAnalyticValue" id="3YearROI"></p>
                 </div>
                 <div class="row">
-                    <button type="button" class="btn btn-primary" onclick="window.location.href='https://ocean.dhigroup.com/WEFTEC-2022/';">Learn more</button>
-                </div>
+                    <button type="button" class="btn btn-primary" style="background-color: #0075FF; padding: 10px 20px; cursor: pointer; border: 0; color: white; font-size:14px;" onclick="window.location.href='https://ocean.dhigroup.com/WEFTEC-2022/';">Learn more</button>
+                </div><br>
             </div>
             
             <!-- Disclaimer -->
-            <div class="row" align="left" style="font-size: 8px; color: white; padding-top: 20px; padding-bottom: 20px" id="disclaimer">Disclaimer: We provide this website as a service
+            <div class="row" align="left" style="font-size: 8px; color: white; text-shadow: 0 0 5px #333, 0 0 2px #333; padding-top: 20px; padding-bottom: 20px;" id="disclaimer">Disclaimer: We provide this website as a service
                     and for informational purposes only.
                     The transmission of this information does not create any form of relationship with us. You
                     should not act upon information provided on this site without seeking our personal
