@@ -20,6 +20,7 @@ img.logo {
   text-align: center;
   padding: 30px 0 20px 0;
   max-width: 350px;
+  width: 100%;
 }
 h1 {
   color: #fff;
