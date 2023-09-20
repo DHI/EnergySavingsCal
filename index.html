@@ -1,176 +1,171 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Utilizero & DHI energy and carbon savings calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="images/UTILIZERO_Logo_Tagline_Transparent_NEG_RGB_64px.png"
+    />
+    <link href="/css/styles.css" rel="stylesheet" />
+  </head>
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <body>
+    <div class="container">
+      <img
+        class="logo"
+        src="images/UTILIZERO_Logo_Tagline_Transparent_NEG_RGB_350.png"
+      />
+      <h1>Reduce energy use and CO2 emissions</h1>
+      <h3>
+        Discover the benefits in energy savings and carbon reductions when
+        implementing our solutions for aeration control​
+      </h3>
 
-    <style>
-        body {
-            font-family:
-                /* @font-family */
-                "Segoe UI";
-            font-size: 14px;
-	 margin: 0;
-	padding: 0;
-	/*TESTING WRITE ACCESS - BIGGER UPDATE IS COMMING UP*/
-        }
-    </style>
+      <div class="contentHeader">
+        <h2>Info on Water Resource Recovery Facility</h2>
 
-    <!-- Bootstrap core CSS -->
-    <link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <div class="controlsContainer">
+          <div class="controlItem rowFlex">
+            <label for="range"
+              >Capacity
+              <span class="ab">
+                <span class="plantSize" id="plantSize">10</span>
+                <span>(mgd)</span>
+              </span></label
+            >
+            <input
+              type="range"
+              name="range"
+              min="2"
+              max="200"
+              value="10"
+              class="capacityRange"
+              oninput="showValue1(this.value)"
+            />
+          </div>
 
-    <title>DHI energy and carbon savings calculator</title>
+          <div class="controlItem">
+            <label>Country</label>
+            <select class="plantLocation" id="plantWRRF">
+              <option>United States</option>
+            </select>
+          </div>
 
-</head>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
-    crossorigin="anonymous"></script>
-	
-<script defer data-domain="dhi.github.io" src="https://plausible.io/js/plausible.js"></script>
-
-<script src="ROICalculator.js"></script>
-
-<body onload="calculateROI()">
-    
-    <div class="container" align="center" style="background-image: url('calc-background.jpg'); background-size: cover; padding-top:50px;">
-
-        <div class="container" style="max-width: 720px; padding: 20px;">
-            
-            <div class="row" align="center" style="padding-top: 20px; padding-bottom: 20px;">
-                <img width="100" height="59" src="DHI_Logo_White.svg">
-            </div>
-
-            <div class="row" align="center" style="color: white; padding-bottom: 20px;"><h1 style="font-weight: 200; font-size:38px; padding:0; margin:0;">Estimate your energy and carbon savings</h1></div>
-            
-            <div class="row" align="center" style="color: white; padding-bottom: 20px;"><h3>Find out what is the potential savings in energy cost and carbon emissions when you adopt an aeration control optimisation study and implementation by DHI and SENTRY.</h3></div>
-
-            <!-- Calculator controls -->
-            <div class="row" align="center" style="background-color: #003e88; color:#50a0ff; padding: 20px;"><strong style="display: block"><h2>Water & Resource Recovery Facility</h2></strong>
-                <div class="col" style="padding-top: 10px; color: white; display: inline-block;" >Capacity: 
-                    <input type="range" min="2" max="500" value="10" class="myslider" id="sliderRange"
-                        oninput="showValue1(this.value)">
-                    <label for="plantSize"><span id="plantSize">10</span></label><label> (mgd)</label>
-                </div>
-                <div class="col" style="padding-top: 10px; color: white; padding-left: 20px; display: inline;" >Location: 
-                    <select id="plantLocation" onChange="calculateROI()"
-                        style"="padding: 6px; margin-left: 0px; border-radius: 4px; text-decoration: none; line-height: 30px; min-width: 167px; border: solid black 1px;">
-                        <option value=0.0859>Alabama</option>
-                        <option value=0.1974>Alaska</option>
-                        <option value=0.0791>Arizona</option>
-                        <option value=0.0798>Arkansas</option>
-                        <option value=0.1782>California</option>
-                        <option value=0.0879>Colorado</option>
-                        <option value=0.15>Connecticut</option>
-                        <option value=0.0877>Delaware</option>
-                        <option value=0.0708>District of Columbia</option>
-                        <option value=0.0936>Florida</option>
-                        <option value=0.1297>Georgia</option>
-                        <option value=0.3709>Hawaii</option>
-                        <option value=0.0797>Idaho</option>
-                        <option value=0.0932>Illinois</option>
-                        <option value=0.0937>Indiana</option>
-                        <option value=0.0897>Iowa</option>
-                        <option value=0.0864>Kansas</option>
-                        <option value=0.0864>Kentucky</option>
-                        <option value=0.0753>Louisiana</option>
-                        <option value=0.1239>Maine</option>
-                        <option value=0.105>Maryland</option>
-                        <option value=0.18>Massachusetts</option>
-                        <option value=0.0878>Michigan</option>
-                        <option value=0.1017>Minnesota</option>
-                        <option value=0.0704>Mississippi</option>
-                        <option value=0.0929>Missouri</option>
-                        <option value=0.0543>Montana</option>
-                        <option value=0.0777>Nebraska</option>
-                        <option value=0.0902>Nevada</option>
-                        <option value=0.145>New Hampshire</option>
-                        <option value=0.1299>New Jersey</option>
-                        <option value=0.0648>New Mexico</option>
-                        <option value=0.0765>New York</option>
-                        <option value=0.0692>North Carolina</option>
-                        <option value=0.0689>North Dakota</option>
-                        <option value=0.0815>Ohio</option>
-                        <option value=0.0761>Oklahoma</option>
-                        <option value=0.0611>Oregon</option>
-                        <option value=0.0853>Pennsylvania</option>
-                        <option value=0.1741>Rhode Island</option>
-                        <option value=0.0768>South Carolina</option>
-                        <option value=0.0838>South Dakota</option>
-                        <option value=0.071>Tennessee</option>
-                        <option value=0.0752>Texas</option>
-                        <option value=0.0672>Utah</option>
-                        <option value=0.1229>Vermont</option>
-                        <option value=0.0796>Virginia</option>
-                        <option value=0.0559>Washington</option>
-                        <option value=0.0718>West Virginia</option>
-                        <option value=0.093>Wisconsin</option>
-                        <option value=0.0675>Wyoming</option>
-                    </select><br><br>
-                </div>
-            </div>
-
-            <!-- Results -->
-            <div class="row" style="background-color: white; padding-left: 20px; padding-right: 20px; padding-bottom: 20px;" align="center">
-                <img src="calc-table-blue-arrow.svg"  alt="" width="10%">
-                
-                <h2 class="roiResultsTitle" id="roiResultsTitle"" style="color: #0075FF;"></h2>
-                <div class="row" align="left">
-                    <p class="roiAnalyticValue" id="energyCost"></p>
-                </div>
-                <div class="row" align="left">
-                    <p class="roiAnalyticValue" id="totalEnergyConsumption"></p>
-                </div>
-                <div class="row" align="left">
-                    <p class="roiAnalyticValue" id="aerationEnergyConsumption"></p>
-                </div>
-                <div class="row" align="left">
-                    <p class="roiAnalyticValue" id="potentialAerationEnergyReduction"></p>
-                </div>
-                <div class="row" align="left">
-                    <p class="roiAnalyticValue" id="potentialEnergySavings"></p>
-                </div>
-                <div class="row" align="left">
-                    <p class="roiAnalyticValue" id="potentialCO2EmissionSavings"></p>
-                </div>
-                <div class="row" align="left">
-                    <p class="roiAnalyticValue" id="feasibilityStudyInvestment"></p>
-                </div>
-                <div class="row" align="left">
-                    <p class="roiAnalyticValue" id="implementationInvestment"></p>
-                </div>
-                <div class="row" align="left">
-                    <p class="roiAnalyticValue" id="breakevenTime"></p>
-                </div>
-                <div class="row" align="left">
-                    <p class="roiAnalyticValue" id="3YearROI"></p>
-                </div>
-                <div class="row">
-                    <button type="button" class="btn btn-primary" style="background-color: #0075FF; padding: 10px 20px; cursor: pointer; border: 0; color: white; font-size:14px;" onclick="window.location.href='https://ocean.dhigroup.com/WEFTEC-2022/';">Learn more</button>
-                </div><br>
-            </div>
-            
-            <!-- Disclaimer -->
-            <div class="row" align="left" style="font-size: 8px; color: white; text-shadow: 0 0 5px #333, 0 0 2px #333; padding-top: 20px; padding-bottom: 20px;" id="disclaimer">Disclaimer: We provide this website as a service
-                    and for informational purposes only.
-                    The transmission of this information does not create any form of relationship with us. You
-                    should not act upon information provided on this site without seeking our personal
-                    assistance. While we have attempted to maintain the information, the software and any other
-                    services on this site as accurately as possible, the site may contain errors or omissions
-                    for which we disclaim any and all liability. The material and contents posted on this site
-                    is provided without warranty of any kind.
-
-                    We are not responsible for any loss of hardware, software or files, caused by the use of the
-                    web site or elements downloaded or used from/on the web site. Hence we make no warranty,
-                    that the web site or product or services provided on the web site, either by us or on our
-                    behalf (including free software downloads) will meet your requirements or will be
-                    uninterrupted, timely, secure or without errors, or that the website or the servers we use
-                    are free of viruses or bugs or are fully functional or accurate.
-            </div>
-            
+          <div class="controlItem">
+            <label>State</label>
+            <select
+              class="plantLocation"
+              id="plantLocation"
+              onChange="calculateROI()"
+            ></select>
+          </div>
         </div>
+
+        <div class="controlsContainer">
+          <div class="controlItem">
+            <label>Targets of your WRRF</label>
+            <select
+              class="plantLocation"
+              id="plantTargetType"
+              onChange="calculateROI()"
+            >
+              <option value="type1">BOD removal</option>
+              <option value="type2">BOD, NH4-N removal</option>
+              <option value="type3">BOD, N removal</option>
+              <option value="type4">BOD, N, P removal</option>
+            </select>
+          </div>
+
+          <div class="controlItem">
+            <label>Monitoring and automation</label>
+            <select
+              class="plantLocation"
+              id="plantAutomationLevel"
+              onChange="calculateROI()"
+            >
+              <option value="type1">Low (e.g., inflow sensors)</option>
+              <option value="type2">
+                Medium (e.g., DO sensors in process tanks, SCADA for part of the
+                plant)
+              </option>
+              <option value="type3">
+                High (e.g., NH4 sensors in process tanks, airflow sensors, SCADA
+                for the full plant)
+              </option>
+            </select>
+          </div>
+
+          <div class="controlItem">
+            <label>Controllability of aeration</label>
+            <select
+              class="plantLocation"
+              id="plantAerationLevel"
+              onChange="calculateROI()"
+            >
+              <option value="type1">
+                Low (e.g., one blower, aeration is also used for mixing)
+              </option>
+              <option value="type2">
+                Medium (e.g., multiple blowers, mixers)
+              </option>
+              <option value="type3">
+                High (e.g., multiple high-efficiency blowers, mixers, valve
+                regulation)
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="contentArrowDown"></div>
+        <h4 class="roiResultsTitle" id="roiResultsTitle"></h4>
+        <ul class="roiAnalyticValues">
+          <li id="energyCost"></li>
+          <li id="totalEnergyConsumption"></li>
+          <li id="aerationEnergyConsumption"></li>
+          <li id="potentialAerationEnergyReduction"></li>
+          <li id="potentialEnergySavings"></li>
+          <li id="potentialCO2EmissionSavings"></li>
+          <li id="breakevenTime"></li>
+          <li id="3YearROI"></li>
+        </ul>
+        <button
+          type="button"
+          class="learnMore"
+          onclick="location.href='mailto:info@utilizero.com?subject=I am interested in saving energy and reducing CO2 footprint';"
+        >
+          Learn more
+        </button>
+      </div>
+
+      <div class="disclaimer">
+        Disclaimer: We provide this website as a service and for informational
+        purposes only. The transmission of this information does not create any
+        form of relationship with us. You should not act upon information
+        provided on this site without seeking our personal assistance. While we
+        have attempted to maintain the information, the software and any other
+        services on this site as accurately as possible, the site may contain
+        errors or omissions for which we disclaim any and all liability. The
+        material and contents posted on this site is provided without warranty
+        of any kind. We are not responsible for any loss of hardware, software
+        or files, caused by the use of the web site or elements downloaded or
+        used from/on the web site. Hence we make no warranty, that the web site
+        or product or services provided on the web site, either by us or on our
+        behalf (including free software downloads) will meet your requirements
+        or will be uninterrupted, timely, secure or without errors, or that the
+        website or the servers we use are free of viruses or bugs or are fully
+        functional or accurate.
+      </div>
     </div>
-</body>
+
+    <script src="/js/ROICalculator.js"></script>
+  </body>
 </html>
