@@ -19,6 +19,7 @@ body {
 img.logo {
   text-align: center;
   padding: 30px 0 20px 0;
+  max-width: 350px;
 }
 h1 {
   color: #fff;
