@@ -201,7 +201,7 @@ function calculateROI() {
     ).toLocaleString() +
     ' kWh per day</strong>.';
 
-  document.getElementById('roiResultsTitle').innerHTML = 'Optimization Potential';
+  document.getElementById('roiOptimizationTitle').innerHTML = 'Optimization Potential';
   
   document.getElementById('potentialAerationEnergyReduction').innerHTML =
     "When aeration control is optimised with our suggested approach, the potential energy savings are between  <strong>" +
