@@ -93,6 +93,9 @@ h4 {
 ​ .roiResultsTitle {
   color: #0075ff;
 }
+​ .roiOptimizationTitle {
+  color: #0075ff;
+}
 select.plantLocation {
   padding: 6px;
   margin-left: 0px;
