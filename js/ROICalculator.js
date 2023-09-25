@@ -172,7 +172,7 @@ function calculateROI() {
       maximumFractionDigits: 0,
     });
 
-  document.getElementById('roiResultsTitle').innerHTML = 'Results';
+  document.getElementById('roiResultsTitle').innerHTML = 'Current Status';
 
   document.getElementById('energyCost').innerHTML =
     'The plant capacity is <strong>' +
@@ -201,10 +201,12 @@ function calculateROI() {
     ).toLocaleString() +
     ' kWh per day</strong>.';
 
+  document.getElementById('roiResultsTitle').innerHTML = 'Optimization Potential';
+  
   document.getElementById('potentialAerationEnergyReduction').innerHTML =
-    "When aeration control is optimised with DHI's approach, the potential energy savings are between  <strong>" +
+    "When aeration control is optimised with our suggested approach, the potential energy savings are between  <strong>" +
     Math.round(energySavings1).toLocaleString() +
-    ' kWh per day</strong> to <strong>' +
+    ' kWh per day</strong> and <strong>' +
     Math.round(energySavings2).toLocaleString() +
     ' kWh per day</strong>.';
 
@@ -229,11 +231,11 @@ function calculateROI() {
     breakeven2 +
     '</strong> years.';
 
-  document.getElementById('3YearROI').innerHTML =
-    'The 3-year return of investment (ROI) is between <strong>' +
-    format0(roi1) +
-    ' %</strong> and <strong>' +
-    format0(roi2) +
-    ' %</strong>.';
+  //document.getElementById('3YearROI').innerHTML =
+    //'The 3-year return of investment (ROI) is between <strong>' +
+    //format0(roi1) +
+    //' %</strong> and <strong>' +
+    //format0(roi2) +
+    //' %</strong>.';
 }
 calculateROI();
