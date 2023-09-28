@@ -64,9 +64,9 @@ const WRRF_EnergyAeration = {
   type4: [30, 60],
 };
 const WRRF_EnergyConsumption = {
-  type1: [60, 100],
-  type2: [40, 60],
-  type3: [20, 40],
+  type1: [60, 80, 100],
+  type2: [40, 50, 60],
+  type3: [20, 30, 40],
 };
 
 const WRRF_EnergyOptimization = {
@@ -115,9 +115,13 @@ function calculateROI() {
     Math.round(
       (plantsizePE * WRRF_EnergyConsumption[plantTargetType][1]) / 365
     ),
+    Math.round(
+      (plantsizePE * WRRF_EnergyConsumption[plantTargetType][2]) / 365
+    ),
   ];
   var totalEnergyConsumption1 = totalEnergyConsumption[0];
-  var totalEnergyConsumption2 = totalEnergyConsumption[1];
+  var totalEnergyConsumption2 = totalEnergyConsumption[2];
+  var totalEnergyConsumptionAve = totalEnergyConsumption[1];
   var aerationConsumption1 = WRRF_EnergyAeration[plantTargetType][0];
   var aerationConsumption2 = WRRF_EnergyAeration[plantTargetType][1];
   var aerationSavings1 = WRRF_EnergyOptimization[plantAerationLevel][0];
@@ -175,9 +179,9 @@ function calculateROI() {
   document.getElementById('roiResultsTitle').innerHTML = 'Current Status';
 
   document.getElementById('energyCost').innerHTML =
-    'The plant capacity is <strong>' +
+    'The WRRF has a capacity of <strong>' +
     plantSize.toLocaleString() +
-    ' million gallons per day (mgd)</strong> and is located at <strong>' +
+    ' million gallons per day (mgd)</strong> and is located in <strong>' +
     selectPlatLocationName +
     '</strong>, where the average energy cost for industries is <strong>' +
     energyCost +
@@ -193,18 +197,18 @@ function calculateROI() {
   document.getElementById('aerationEnergyConsumption').innerHTML =
     'The estimated energy consumption for aeration is between <strong>' +
     Math.round(
-      (totalEnergyConsumption1 * aerationConsumption1) / 100
+      (totalEnergyConsumptionAve * aerationConsumption1) / 100
     ).toLocaleString() +
     ' kWh per day</strong> and <strong>' +
     Math.round(
-      (totalEnergyConsumption2 * aerationConsumption2) / 100
+      (totalEnergyConsumptionAve * aerationConsumption2) / 100
     ).toLocaleString() +
     ' kWh per day</strong>.';
 
   document.getElementById('roiOptimizationTitle').innerHTML = 'Optimization Potential';
   
   document.getElementById('potentialAerationEnergyReduction').innerHTML =
-    "When aeration control is optimised with our suggested approach, the potential energy savings are between  <strong>" +
+    "When aeration control is optimised with our approach, the potential energy savings are between  <strong>" +
     Math.round(energySavings1).toLocaleString() +
     ' kWh per day</strong> and <strong>' +
     Math.round(energySavings2).toLocaleString() +
