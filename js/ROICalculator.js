@@ -58,10 +58,10 @@ const priceIndex2022 = {
 };
 
 const WRRF_EnergyAeration = {
-  type1: [40, 70],
-  type2: [40, 70],
-  type3: [30, 60],
-  type4: [30, 60],
+  type1: [40, 55, 70],
+  type2: [40, 55, 70],
+  type3: [30, 45, 60],
+  type4: [30, 45, 60],
 };
 const WRRF_EnergyConsumption = {
   type1: [60, 80, 100],
@@ -123,18 +123,19 @@ function calculateROI() {
   var totalEnergyConsumption2 = totalEnergyConsumption[2];
   var totalEnergyConsumptionAve = totalEnergyConsumption[1];
   var aerationConsumption1 = WRRF_EnergyAeration[plantTargetType][0];
-  var aerationConsumption2 = WRRF_EnergyAeration[plantTargetType][1];
+  var aerationConsumption2 = WRRF_EnergyAeration[plantTargetType][2];
+  var aerationConsumptionAve = WRRF_EnergyAeration[plantTargetType][1];
   var aerationSavings1 = WRRF_EnergyOptimization[plantAerationLevel][0];
   var aerationSavings2 = WRRF_EnergyOptimization[plantAerationLevel][1];
   var CO2emission = 0.62596; // kg per kWh
   var feasibilityStudyPrice = 20000;
   var implementationProject = [50000, 90000, 150000];
   var energySavings1 =
-    totalEnergyConsumption1 *
+    totalEnergyConsumptionAve *
     (aerationConsumption1 / 100) *
     (aerationSavings1 / 100);
   var energySavings2 =
-    totalEnergyConsumption2 *
+    totalEnergyConsumptionAve *
     (aerationConsumption2 / 100) *
     (aerationSavings2 / 100);
   var energyCostSavings1 = energySavings1 * energyCost * 365;
