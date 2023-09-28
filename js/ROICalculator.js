@@ -110,13 +110,13 @@ function calculateROI() {
 
   const totalEnergyConsumption = [
     Math.round(
-      (plantsizePE * WRRF_EnergyConsumption[plantTargetType][0]) / 365
+      (plantsizePE * WRRF_EnergyConsumption[plantAerationLevel][0]) / 365
     ),
     Math.round(
-      (plantsizePE * WRRF_EnergyConsumption[plantTargetType][1]) / 365
+      (plantsizePE * WRRF_EnergyConsumption[plantAerationLevel][1]) / 365
     ),
     Math.round(
-      (plantsizePE * WRRF_EnergyConsumption[plantTargetType][2]) / 365
+      (plantsizePE * WRRF_EnergyConsumption[plantAerationLevel][2]) / 365
     ),
   ];
   var totalEnergyConsumption1 = totalEnergyConsumption[0];
