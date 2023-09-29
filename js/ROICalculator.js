@@ -119,7 +119,7 @@ function calculateROI() {
       (plantsizePE * WRRF_EnergyConsumption[plantAerationLevel][2]) / 365
     ),
   ];
-  var totalEnergyConsumption1 = totalEnergyConsumption[0];
+  var totalEnergyConsumption1 = Math.round(totalEnergyConsumption[0]/100) * 100;
   var totalEnergyConsumption2 = totalEnergyConsumption[2];
   var totalEnergyConsumptionAve = totalEnergyConsumption[1];
   var aerationConsumption1 = WRRF_EnergyAeration[plantTargetType][0];
@@ -185,8 +185,8 @@ function calculateROI() {
     ' million gallons per day (mgd)</strong> and is located in <strong>' +
     selectPlatLocationName +
     '</strong>, where the average energy cost for industries is <strong>' +
-    energyCost +
-    ' USD per kWh</strong>.';
+    energyCost*1000 +
+    ' USD per MWh</strong>.';
 
   document.getElementById('totalEnergyConsumption').innerHTML =
     'The total estimated energy consumption of the WRRF is between <strong>' +
