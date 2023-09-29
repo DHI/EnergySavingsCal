@@ -121,7 +121,7 @@ function calculateROI() {
   ];
   var totalEnergyConsumption1 = Math.round(totalEnergyConsumption[0]/100) * 100;
   var totalEnergyConsumption2 = Math.round(totalEnergyConsumption[2]/100) * 100;
-  var totalEnergyConsumptionAve = totalEnergyConsumption[1];
+  var totalEnergyConsumptionAve = Math.round(totalEnergyConsumption[1]/100) * 100;
   var aerationConsumption1 = WRRF_EnergyAeration[plantTargetType][0];
   var aerationConsumption2 = WRRF_EnergyAeration[plantTargetType][2];
   var aerationConsumptionAve = WRRF_EnergyAeration[plantTargetType][1];
@@ -197,12 +197,12 @@ function calculateROI() {
 
   document.getElementById('aerationEnergyConsumption').innerHTML =
     'The estimated energy consumption for aeration is between <strong>' +
-    100 * Math.round(
-      (totalEnergyConsumptionAve * aerationConsumption1 / 100) / 100
+    Math.round(
+      (totalEnergyConsumptionAve * aerationConsumption1 / 100)
     ).toLocaleString() +
     ' kWh per day</strong> and <strong>' +
-    100 * Math.round(
-      (totalEnergyConsumptionAve * aerationConsumption2 / 100) / 100
+    Math.round(
+      (totalEnergyConsumptionAve * aerationConsumption2 / 100)
     ).toLocaleString() +
     ' kWh per day</strong>.';
 
