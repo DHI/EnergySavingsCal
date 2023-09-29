@@ -74,6 +74,13 @@ const WRRF_EnergyOptimization = {
   type2: [15, 25],
   type3: [5, 15],
 };
+
+const WRRF_SensorImplementation = {
+  type1: [2],
+  type2: [1],
+  type3: [0.25],
+};
+
 const selectPlatLocations = document.getElementById('plantLocation');
 
 for (var i = 0; i < Object.keys(priceIndex2022).length; i++) {
@@ -130,6 +137,7 @@ function calculateROI() {
   var CO2emission = 0.62596; // kg per kWh
   var feasibilityStudyPrice = 20000;
   var implementationProject = [50000, 90000, 150000];
+  var capitalCost = [30000, 60000, 100000];
   var energySavings1 =
     Math.round((totalEnergyConsumptionAve *
     (aerationConsumption1 / 100) *
@@ -154,21 +162,32 @@ function calculateROI() {
     tempImplementationProject = implementationProject[2];
   }
 
+  let tempCapitalCost = 0;
+  if (plantsizePE < 50000) {
+    tempCapitalCost = capitalCost[0];
+  }
+  if (plantsizePE >= 50000) {
+    tempCapitalCost = capitalCost[1];
+  }
+  if (plantsizePE >= 300000) {
+    tempCapitalCost = capitalCost[2];
+  }
+
   var breakeven1 = (
-    (feasibilityStudyPrice + tempImplementationProject) /
+    (feasibilityStudyPrice + tempImplementationProject + WRRF_SensorImplementation[plantAutomationLevel] * tempCapitalCost) /
     energyCostSavings2
   ).toFixed(1);
   var breakeven2 = (
-    (feasibilityStudyPrice + tempImplementationProject) /
+    (feasibilityStudyPrice + tempImplementationProject + WRRF_SensorImplementation[plantAutomationLevel] * tempCapitalCost) /
     energyCostSavings1
   ).toFixed(1);
   var roi1 =
     ((energyCostSavings1 * 3) /
-      (feasibilityStudyPrice + tempImplementationProject)) *
+      (feasibilityStudyPrice + tempImplementationProject + WRRF_SensorImplementation[plantAutomationLevel] * tempCapitalCost)) *
     100;
   var roi2 =
     ((energyCostSavings2 * 3) /
-      (feasibilityStudyPrice + tempImplementationProject)) *
+      (feasibilityStudyPrice + tempImplementationProject + WRRF_SensorImplementation[plantAutomationLevel] * tempCapitalCost)) *
     100;
 
   const format0 = (num) =>
