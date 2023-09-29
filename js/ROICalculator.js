@@ -120,7 +120,7 @@ function calculateROI() {
     ),
   ];
   var totalEnergyConsumption1 = Math.round(totalEnergyConsumption[0]/100) * 100;
-  var totalEnergyConsumption2 = totalEnergyConsumption[2];
+  var totalEnergyConsumption2 = Math.round(totalEnergyConsumption[2]);
   var totalEnergyConsumptionAve = totalEnergyConsumption[1];
   var aerationConsumption1 = WRRF_EnergyAeration[plantTargetType][0];
   var aerationConsumption2 = WRRF_EnergyAeration[plantTargetType][2];
