@@ -120,7 +120,7 @@ function calculateROI() {
     ),
   ];
   var totalEnergyConsumption1 = Math.round(totalEnergyConsumption[0]/100) * 100;
-  var totalEnergyConsumption2 = Math.round(totalEnergyConsumption[2]);
+  var totalEnergyConsumption2 = Math.round(totalEnergyConsumption[2]/100) * 100;
   var totalEnergyConsumptionAve = totalEnergyConsumption[1];
   var aerationConsumption1 = WRRF_EnergyAeration[plantTargetType][0];
   var aerationConsumption2 = WRRF_EnergyAeration[plantTargetType][2];
@@ -131,15 +131,15 @@ function calculateROI() {
   var feasibilityStudyPrice = 20000;
   var implementationProject = [50000, 90000, 150000];
   var energySavings1 =
-    totalEnergyConsumptionAve *
+    Math.round((totalEnergyConsumptionAve *
     (aerationConsumption1 / 100) *
-    (aerationSavings1 / 100);
+    (aerationSavings1 / 100))/100) * 100;
   var energySavings2 =
-    totalEnergyConsumptionAve *
+    Math.round((totalEnergyConsumptionAve *
     (aerationConsumption2 / 100) *
-    (aerationSavings2 / 100);
-  var energyCostSavings1 = energySavings1 * energyCost * 365;
-  var energyCostSavings2 = energySavings2 * energyCost * 365;
+    (aerationSavings2 / 100))/100) *100;
+  var energyCostSavings1 = Math.round((energySavings1 * energyCost * 365)/100) * 100;
+  var energyCostSavings2 = Math.round((energySavings2 * energyCost * 365)/100) * 100;
   var co2Savings1 = (energySavings1 * CO2emission * 365) / 1000;
   var co2Savings2 = (energySavings2 * CO2emission * 365) / 1000;
 
@@ -197,12 +197,12 @@ function calculateROI() {
 
   document.getElementById('aerationEnergyConsumption').innerHTML =
     'The estimated energy consumption for aeration is between <strong>' +
-    Math.round(
-      (totalEnergyConsumptionAve * aerationConsumption1) / 100
+    100 * Math.round(
+      (totalEnergyConsumptionAve * aerationConsumption1 / 100) / 100
     ).toLocaleString() +
     ' kWh per day</strong> and <strong>' +
-    Math.round(
-      (totalEnergyConsumptionAve * aerationConsumption2) / 100
+    100 * Math.round(
+      (totalEnergyConsumptionAve * aerationConsumption2 / 100) / 100
     ).toLocaleString() +
     ' kWh per day</strong>.';
 
