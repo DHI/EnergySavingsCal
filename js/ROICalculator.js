@@ -204,7 +204,7 @@ function calculateROI() {
     ' million gallons per day (mgd)</strong> and is located in <strong>' +
     selectPlatLocationName +
     '</strong>, where the average energy cost for industries is <strong>' +
-    energyCost*1000 +
+    Math.round(energyCost*1000) +
     ' USD per MWh</strong>.';
 
   document.getElementById('totalEnergyConsumption').innerHTML =
